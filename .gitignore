@@ -1,6 +1,9 @@
-.idea/
+/.idea
 *iml
-.mvn/
+/.mvn
+/target/maven-archiver
+/target/maven-status
+/target/surefire-reports
 # Default ignored files
 /shelf/
 /.idea/workspace.xml
