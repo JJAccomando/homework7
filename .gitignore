@@ -1,5 +1,7 @@
+# Ignore IntelliJ IDEA files
 /.idea
 *iml
+# Ignore Maven files
 /.mvn
 /target/maven-archiver
 /target/maven-status
