@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.util.Scanner;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Hello world!
@@ -20,15 +22,19 @@ public class Executor {
 
         try {
             File myFile = new File(filePath);
-            String content = FileUtils.readFileToString(myFile, "UTF-8");
+            String content = FileUtils.readFileToString(myFile, "UTF-8").toLowerCase();
             String[] splitContent = StringUtils.split(content, " \n\t\r.,;:!?()[]{}\"");
-            Set<String> uniqueWords = new HashSet<>();
-            for (String word : splitContent) {
-                if (StringUtils.isNotBlank(word)) {
-                    uniqueWords.add(word.toLowerCase());
+            Map<String, Integer> wordCount = new HashMap<>();
+            for (String word: splitContent) {
+                wordCount.put(word, wordCount.getOrDefault(word, 0) + 1);
+            }
+            int uniqueWordCount = 0;
+            for (String word: splitContent) {
+                if (wordCount.getOrDefault(word, 0) == 1) {
+                    uniqueWordCount++;
                 }
             }
-            String myString = String.format("\nNumber of unique words: %d", uniqueWords.size());
+            String myString = String.format("\nNumber of unique words: %d", uniqueWordCount);
             FileUtils.writeStringToFile(myFile, myString, "UTF-8", true);
         } catch (IOException e) {
             e.printStackTrace();
