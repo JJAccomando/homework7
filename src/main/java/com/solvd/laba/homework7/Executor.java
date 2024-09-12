@@ -12,11 +12,11 @@ public class Executor {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         System.out.print("Please enter the file path: ");
-        String filePath = input.nextLine();
-        filePath = StringUtils.strip(filePath, "\""); //removes quotations if filePath is enclosed by them
 
         try {
-            File myFile = new File(filePath);
+            /* Creates a file object using the path given by the user input.
+            This input removes any enclosing quotations if the file path has them. */
+            File myFile = new File(StringUtils.strip(input.nextLine(), "\""));
 
             /* The code below reads the contents of a file and returns the contents as one large String with all characters set to lower case
             and then separates each word designated by the separator characters and then stores each word as an element in an array. */
